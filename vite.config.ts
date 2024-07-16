@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
       lib: {
         entry: 'src/lib/index.ts',
         name: 'qui',
-        formats: ['es', 'umd'],
+        fileName: (format) => `index.${format}.js`,
       },
       rollupOptions: {
         external: ['react', 'react-dom'],
@@ -19,6 +19,8 @@ export default defineConfig(({ mode }) => ({
             'react-dom': 'ReactDOM',
           },
         },
+        sourcemap: true,
+        emptyOutDir: true,
       },
     } : {},
 }))

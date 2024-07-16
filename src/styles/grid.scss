@@ -1,0 +1,57 @@
+@use 'sass:math';
+
+// if change breakpoint, also change in components/Grid/constants.ts
+$breakpoints: (
+  "xl": 1600px,
+  "lg": 1200px,
+  "md": 992px,
+  "sm": 768px,
+  "xs": 576px
+);
+
+$min-bp: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px,
+);
+
+@mixin col-style($span) {
+  flex: 0 0 math.div(100%, 24) * $span;
+  max-width: math.div(100%, 24) * $span;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc((var(--gutter-x) / 2) * -1px);
+  margin-right: calc((var(--gutter-x) / 2) * -1px);
+
+  // Generate default .col-{size} classes
+  @for $i from 1 through 24 {
+    .col-#{$i} {
+      @include col-style($i);
+    }
+  }
+
+  // Generate media queries for each breakpoint
+  @each $breakpoint in map-keys($min-bp) {
+    $max-width: map-get($breakpoints, $breakpoint);
+    $min-width: map-get($min-bp, $breakpoint);
+
+    @media (min-width: $min-width){
+      @for $i from 1 through 24 {
+        .col-#{$breakpoint}-#{$i} {
+          @include col-style($i);
+        }
+      }
+    }
+  }
+
+  .col {
+    padding: calc(var(--gutter-y) / 2) calc(var(--gutter-x) / 2);
+    box-sizing: border-box;
+  }
+}

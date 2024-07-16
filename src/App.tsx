@@ -1,34 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import Row from './components/Grid/Row';
+import Col from './components/Grid/Col';
+import './styles/app.scss'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="p-8">
+      <h1 className="text-2xl font-bold mb-6">Qui Showcase</h1>
+
+      <Row gutter={[20, 20]}>
+        <Col span={{ xs: 24 }} className="bg-blue-500 text-white p-4">100%</Col>
+      </Row>
+
+      <Row gutter={[20, 20]} className="my-4">
+        <Col span={{ xs: 6 }} className="bg-blue-500 text-white p-4">25%</Col>
+        <Col span={{ xs: 6 }} className="bg-blue-200 p-4">25%</Col>
+        <Col span={{ xs: 6 }} className="bg-blue-500 text-white p-4">25%</Col>
+        <Col span={{ xs: 6 }} className="bg-blue-200 p-4">25%</Col>
+      </Row>
+
+      <Row gutter={[20, 20]} className="my-4">
+        <Col span={{ xs: 8 }} className="bg-blue-500 text-white p-4">33.33%</Col>
+        <Col span={{ xs: 8 }} className="bg-blue-200 p-4">33.33%</Col>
+        <Col span={{ xs: 8 }} className="bg-blue-500 text-white p-4">33.33%</Col>
+      </Row>
+
+      <Row gutter={[20, 20]} className="my-4">
+        <Col span={{ xs: 12 }} className="bg-blue-500 text-white p-4">50%</Col>
+        <Col span={{ xs: 12 }} className="bg-blue-200 p-4">50%</Col>
+      </Row>
+
+      <Row gutter={[20, 20]} className="my-4">
+        <Col span={{ xs: 16 }} className="bg-blue-500 text-white p-4">66.66%</Col>
+        <Col span={{ xs: 8 }} className="bg-blue-200 p-4">33.33%</Col>
+      </Row>
+
+      <h2 className="text-xl font-bold mt-8 mb-6">Responsive</h2>
+      <Row>
+        <Col span={{ xs: 24, sm: 12, md: 8, lg: 6 }} className="bg-blue-500 text-white p-4">25%</Col>
+        <Col span={{ xs: 24, sm: 12, md: 8, lg: 6 }} className="bg-blue-200 p-4">25%</Col>
+        <Col span={{ xs: 24, sm: 12, md: 8, lg: 6 }} className="bg-blue-500 text-white p-4">25%</Col>
+        <Col span={{ xs: 24, sm: 12, md: 8, lg: 6 }} className="bg-blue-200 p-4">25%</Col>
+      </Row>
+
+    </div>
   )
 }
 
