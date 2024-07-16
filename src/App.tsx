@@ -3,6 +3,8 @@ import Row from './components/Grid/Row'
 import Col from './components/Grid/Col'
 import './styles/app.scss'
 import Button from './components/Button'
+import { TextInput } from './components'
+import { Label } from './Label'
 
 const App: React.FC = () => {
   return (
@@ -97,6 +99,13 @@ const App: React.FC = () => {
       >
         คลิกที่นี่
       </Button>
+
+      <h2 className='text-xl font-bold mt-8 mb-6'>Input</h2>
+      <TextInput />
+
+      <h2 className='text-xl font-bold mt-8 mb-6'>Label</h2>
+      <Label className='block text-sm font-medium text-gray-700' text='Label' />
+      <TextInput />
     </div>
   )
 }
