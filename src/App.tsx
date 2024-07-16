@@ -5,6 +5,7 @@ import './styles/app.scss'
 import Button from './components/Button'
 import { TextInput } from './components'
 import { Label } from './Label'
+import { Popover } from './components/Popover'
 
 const App: React.FC = () => {
   return (
@@ -106,6 +107,13 @@ const App: React.FC = () => {
       <h2 className='text-xl font-bold mt-8 mb-6'>Label</h2>
       <Label className='block text-sm font-medium text-gray-700' text='Label' />
       <TextInput />
+
+      <h2 className='text-xl font-bold mt-8 mb-6'>Label</h2>
+      <Popover
+        content={<div className='p-2'>This is the popover content.</div>}
+      >
+        <Button type='primary'>Click me</Button>
+      </Popover>
     </div>
   )
 }
