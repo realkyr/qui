@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { DropdownProps, Options } from './types.ts'
 import TextInput from '../TextInput'
-import { Popover } from '../Popover'
+import Popover from '../Popover'
 import Show from '../Show'
 import { classNames } from '@realkyr/qcore/utils'
 
