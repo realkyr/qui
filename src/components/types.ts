@@ -38,4 +38,5 @@ export interface CommonInputProps {
   placeholder?: string
   value?: string
   disabled?: boolean
+  readonly?: boolean
 }

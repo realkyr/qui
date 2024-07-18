@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { classNames } from '@realkyr/qcore/utils'
-import { useClientViewport, useClickOutside } from '@realkyr/qcore/hooks'
+import {
+  useClientViewport,
+  useClickOutside,
+  useControlledState
+} from '@realkyr/qcore/hooks'
 
 import { PopoverProps } from './types.ts'
 
@@ -9,13 +13,15 @@ import { PopoverProps } from './types.ts'
  *
  * A React component for displaying a popover.
  */
-export const Popover: React.FC<PopoverProps> = ({
+const Popover: React.FC<PopoverProps> = ({
   content,
   children,
   className,
+  isVisible: propsIsVisible,
+  onVisibleChange,
   position = 'bottom-left'
 }) => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useControlledState(propsIsVisible, false)
   const [calculatedPosition, setCalculatedPosition] = useState(position)
   const popoverRef = useRef<HTMLDivElement>(null)
   const ref = useRef<HTMLDivElement>(null)
@@ -23,27 +29,39 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const { clientHeight } = useClientViewport()
   useClickOutside(containerRef, () => {
-    console.log('Clicked outside!')
     setIsVisible(false)
+    onVisibleChange?.(false, 'click-outside')
   })
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible)
+    onVisibleChange?.(!isVisible, 'click')
   }
 
   useEffect(() => {
-    if (popoverRef.current && ref.current && position?.includes('bottom')) {
-      const rect = popoverRef.current.getBoundingClientRect()
-      const refRect = ref.current.getBoundingClientRect()
-      const locationIfBottom = refRect.bottom + rect.height
+    const decidePosition = () => {
+      if (popoverRef.current && ref.current && position?.includes('bottom')) {
+        const rect = popoverRef.current.getBoundingClientRect()
+        const refRect = ref.current.getBoundingClientRect()
+        const locationIfBottom = refRect.bottom + rect.height
 
-      if (clientHeight > locationIfBottom) {
-        setCalculatedPosition(position)
-      } else {
-        setCalculatedPosition('top-left')
+        if (clientHeight > locationIfBottom) {
+          setCalculatedPosition(position)
+        } else {
+          setCalculatedPosition('top-left')
+        }
       }
     }
-  }, [position, ref.current, popoverRef.current, clientHeight])
+
+    decidePosition()
+    window.addEventListener('resize', decidePosition)
+    window.addEventListener('scroll', decidePosition)
+
+    return () => {
+      window.removeEventListener('resize', decidePosition)
+      window.removeEventListener('scroll', decidePosition)
+    }
+  }, [position, clientHeight])
 
   const getPopoverPositionStyles = () => {
     switch (calculatedPosition) {
@@ -88,3 +106,5 @@ export const Popover: React.FC<PopoverProps> = ({
     </div>
   )
 }
+
+export default Popover

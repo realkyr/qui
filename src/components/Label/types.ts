@@ -1,4 +1,4 @@
-import { CommonProps } from '../components/types.ts'
+import { CommonProps } from '../types.ts'
 import { ReactNode } from 'react'
 
 /**

@@ -13,6 +13,7 @@ const TextInput: React.FC<TextInputProps> = ({
   prefix,
   suffix,
   name,
+  readonly = false,
   ...rest
 }) => {
   // Define class names based on props
@@ -31,6 +32,7 @@ const TextInput: React.FC<TextInputProps> = ({
         name={name}
         className={classNames([inputClasses, 'outline-none'])}
         disabled={disabled}
+        readOnly={readonly}
         onChange={onChange}
         placeholder={placeholder}
         value={value}

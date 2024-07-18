@@ -1,3 +1,6 @@
 export * from './Grid'
 export { default as Button } from './Button'
 export { default as TextInput } from './TextInput'
+export { default as Popover } from './Popover'
+export { default as Dropdown } from './Dropdown'
+export { default as Label } from './Label'

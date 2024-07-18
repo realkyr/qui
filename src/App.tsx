@@ -3,9 +3,7 @@ import Row from './components/Grid/Row'
 import Col from './components/Grid/Col'
 import './styles/app.scss'
 import Button from './components/Button'
-import { TextInput } from './components'
-import { Label } from './Label'
-import { Popover } from './components/Popover'
+import { TextInput, Label, Popover, Dropdown } from './components'
 
 const App: React.FC = () => {
   return (
@@ -108,12 +106,30 @@ const App: React.FC = () => {
       <Label className='block text-sm font-medium text-gray-700' text='Label' />
       <TextInput />
 
-      <h2 className='text-xl font-bold mt-8 mb-6'>Label</h2>
+      <h2 className='text-xl font-bold mt-8 mb-6'>Pop Over</h2>
       <Popover
         content={<div className='p-2'>This is the popover content.</div>}
       >
         <Button type='primary'>Click me</Button>
       </Popover>
+
+      <h2 className='text-xl font-bold mt-8 mb-6'>Dropdown</h2>
+      <Dropdown
+        options={[
+          {
+            value: '1',
+            label: 'Option 1'
+          },
+          {
+            value: '2',
+            label: 'Option 2'
+          },
+          {
+            value: '3',
+            label: 'Option 3'
+          }
+        ]}
+      />
     </div>
   )
 }

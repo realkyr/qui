@@ -6,7 +6,7 @@ import React from 'react'
  *
  * A React component for displaying a label.
  */
-export const Label: React.FC<LabelProps> = ({
+const Label: React.FC<LabelProps> = ({
   text,
   htmlFor,
   children,
@@ -20,3 +20,5 @@ export const Label: React.FC<LabelProps> = ({
     </label>
   )
 }
+
+export default Label
