@@ -4,6 +4,7 @@ import Col from './components/Grid/Col'
 import './styles/app.scss'
 import Button from './components/Button'
 import { TextInput, Label, Popover, Dropdown, TextArea } from './components'
+import ShowcaseRadioButton from './Showcase/RadioButton'
 
 const App: React.FC = () => {
   return (
@@ -137,6 +138,8 @@ const App: React.FC = () => {
 
         <TextArea className='mt-2' resize='vertical' />
       </div>
+
+      <ShowcaseRadioButton />
     </div>
   )
 }
