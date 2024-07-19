@@ -27,10 +27,10 @@ export interface CommonProps {
  * - `value`: Value of the input.
  * - `disabled`: Disables the input if true.
  */
-export interface CommonInputProps {
-  onChange?: ChangeEventHandler<HTMLInputElement>
-  onFocus?: FocusEventHandler<HTMLInputElement>
-  onBlur?: FocusEventHandler<HTMLInputElement>
+export interface CommonInputProps<T> {
+  onChange?: ChangeEventHandler<T>
+  onFocus?: FocusEventHandler<T>
+  onBlur?: FocusEventHandler<T>
   name?: string
   className?: string
   style?: CSSProperties

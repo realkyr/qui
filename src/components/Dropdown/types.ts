@@ -12,6 +12,8 @@ export interface Options {
  * @extends {Omit<CommonInputProps, 'onChange'>}
  * @extends {CommonProps}
  *
+ * @property {string} [dropdownContainerClassName] - An optional CSS class name to apply to the dropdown container.
+ *
  * @property {Options[]} options - The list of options to display in the dropdown. Each option should have a label and a value.
  * @property {(value: string) => void} [onSelect] - An optional callback function that is triggered when an option is selected. The selected option's value is passed as an argument.
  *
@@ -20,8 +22,9 @@ export interface Options {
  * @property {string} value - The corresponding value for the dropdown option.
  */
 export interface DropdownProps
-  extends Omit<CommonInputProps, 'onChange'>,
+  extends Omit<CommonInputProps<HTMLInputElement>, 'onChange'>,
     CommonProps {
+  dropdownContainerClassName?: string
   onSelect?: (value: string) => void
   options: Options[]
 }

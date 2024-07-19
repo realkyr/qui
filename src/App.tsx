@@ -3,7 +3,7 @@ import Row from './components/Grid/Row'
 import Col from './components/Grid/Col'
 import './styles/app.scss'
 import Button from './components/Button'
-import { TextInput, Label, Popover, Dropdown } from './components'
+import { TextInput, Label, Popover, Dropdown, TextArea } from './components'
 
 const App: React.FC = () => {
   return (
@@ -130,6 +130,13 @@ const App: React.FC = () => {
           }
         ]}
       />
+
+      <h2 className='text-xl font-bold mt-8 mb-6'>TextArea</h2>
+      <div className='flex flex-col gap-y-1'>
+        <TextArea autoGrow />
+
+        <TextArea className='mt-2' resize='vertical' />
+      </div>
     </div>
   )
 }

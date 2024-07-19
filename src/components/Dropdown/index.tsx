@@ -3,6 +3,7 @@ import { DropdownProps, Options } from './types.ts'
 import TextInput from '../TextInput'
 import Popover from '../Popover'
 import Show from '../Show'
+import { classNames } from '../../../../qcore/lib/utils'
 
 const Dropdown: React.FC<DropdownProps> = ({
   options,
@@ -10,6 +11,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   value,
   onSelect,
   className,
+  dropdownContainerClassName,
   style,
   disabled,
   name
@@ -43,7 +45,13 @@ const Dropdown: React.FC<DropdownProps> = ({
         isVisible={isVisible}
         onVisibleChange={setIsVisible}
         content={
-          <div className='bg-white rounded-lg mt-2 dark:bg-input-dark'>
+          <div
+            className={classNames([
+              dropdownContainerClassName,
+              'bg-white rounded-lg mt-2 dark:bg-input-dark text-left',
+              'overflow-y-auto max-h-32'
+            ])}
+          >
             <Show when={options.length === 0}>
               <div className='p-2 text-center'>No Data available</div>
             </Show>

@@ -8,7 +8,9 @@ import { CommonInputProps, CommonProps } from '../types.ts'
  * - `prefix`: Element to display before the input.
  * - `suffix`: Element to display after the input.
  */
-export interface TextInputProps extends CommonProps, CommonInputProps {
+export interface TextInputProps
+  extends CommonProps,
+    CommonInputProps<HTMLInputElement> {
   prefix?: ReactNode
   suffix?: ReactNode
 }
