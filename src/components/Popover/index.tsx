@@ -94,7 +94,7 @@ const Popover: React.FC<PopoverProps> = ({
 
       <div
         className={classNames([
-          `absolute z-10 min-w-48 p-2 bg-white rounded-lg shadow-lg`,
+          `absolute z-10 min-w-48 bg-white dark:bg-input-dark rounded-lg shadow-lg`,
           isVisible ? 'visible' : 'invisible',
           getPopoverPositionStyles(),
           className

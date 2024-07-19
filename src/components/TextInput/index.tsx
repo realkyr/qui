@@ -23,14 +23,17 @@ const TextInput: React.FC<TextInputProps> = ({
 
   return (
     <div
-      className={`flex items-center ${baseClasses} ${disabledClasses} ${className}`}
+      className={`flex items-center dark:bg-input-dark ${baseClasses} ${disabledClasses} ${className}`}
       style={style}
     >
       {prefix && <span className='mr-2'>{prefix}</span>}
       <input
         type='text'
         name={name}
-        className={classNames([inputClasses, 'outline-none'])}
+        className={classNames([
+          inputClasses,
+          'outline-none dark:bg-input-dark'
+        ])}
         disabled={disabled}
         readOnly={readonly}
         onChange={onChange}

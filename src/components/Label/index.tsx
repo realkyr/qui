@@ -1,5 +1,6 @@
 import { LabelProps } from './types.ts'
 import React from 'react'
+import { classNames } from '../../../../qcore/lib/utils'
 
 /**
  * Label
@@ -14,7 +15,11 @@ const Label: React.FC<LabelProps> = ({
   style
 }) => {
   return (
-    <label htmlFor={htmlFor} className={className} style={style}>
+    <label
+      htmlFor={htmlFor}
+      className={classNames(['dark:text-white', className])}
+      style={style}
+    >
       {text}
       {children}
     </label>

@@ -3,7 +3,6 @@ import { DropdownProps, Options } from './types.ts'
 import TextInput from '../TextInput'
 import Popover from '../Popover'
 import Show from '../Show'
-import { classNames } from '@realkyr/qcore/utils'
 
 const Dropdown: React.FC<DropdownProps> = ({
   options,
@@ -44,11 +43,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         isVisible={isVisible}
         onVisibleChange={setIsVisible}
         content={
-          <div
-            className={classNames({
-              'bg-white rounded-lg mt-2': true
-            })}
-          >
+          <div className='bg-white rounded-lg mt-2 dark:bg-input-dark'>
             <Show when={options.length === 0}>
               <div className='p-2 text-center'>No Data available</div>
             </Show>
@@ -57,7 +52,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               {options.map((option, index) => (
                 <div
                   key={index}
-                  className='py-2 px-4 cursor-pointer hover:bg-gray-200'
+                  className='py-2 px-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-dark-hover'
                   onClick={() => handleSelectOption(option)}
                 >
                   {option.label}
@@ -66,7 +61,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             </Show>
           </div>
         }
-        className='w-full'
+        className='w-full overflow-hidden'
         position='bottom'
       >
         <div onClick={handleToggleVisibility} className='cursor-pointer w-full'>

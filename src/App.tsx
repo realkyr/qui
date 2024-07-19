@@ -7,7 +7,7 @@ import { TextInput, Label, Popover, Dropdown } from './components'
 
 const App: React.FC = () => {
   return (
-    <div className='p-8'>
+    <div className='p-8 dark:bg-dark dark:text-white'>
       <h1 className='text-2xl font-bold mb-6'>Qui Showcase</h1>
 
       <Row gutter={[20, 20]}>
