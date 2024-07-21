@@ -5,6 +5,7 @@ import './styles/app.scss'
 import Button from './components/Button'
 import { TextInput, Label, Popover, Dropdown, TextArea } from './components'
 import ShowcaseRadioButton from './Showcase/RadioButton'
+import ShowcaseCheckbox from './Showcase/Checkbox'
 
 const App: React.FC = () => {
   return (
@@ -139,7 +140,15 @@ const App: React.FC = () => {
         <TextArea className='mt-2' resize='vertical' />
       </div>
 
-      <ShowcaseRadioButton />
+      <Row>
+        <Col span={{ xs: 24, lg: 12 }}>
+          <ShowcaseRadioButton />
+        </Col>
+
+        <Col span={{ xs: 24, lg: 12 }}>
+          <ShowcaseCheckbox />
+        </Col>
+      </Row>
     </div>
   )
 }
